@@ -59,8 +59,8 @@ function voidFunction(): void {
 
 // type assertions
 // A type assertion is like a type cast in other languages, but performs no special 
-// checking or restructuring of data.It has no runtime impact, and is used purely 
-// by the compiler.TypeScript assumes that you, the programmer, have performed any 
+// checking or restructuring of data. It has no runtime impact, and is used purely 
+// by the compiler. TypeScript assumes that you, the programmer, have performed any 
 // special checks that you need
 let aValue: any = "jason";
 let anotherLength: number = (aValue as string).length;

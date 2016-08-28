@@ -9,8 +9,7 @@ function f(shouldInitialize: boolean) {
 // the above function will return 10 if passed true
 
 // all declarations are accessible anywhere within their containing function, 
-// module, namespace, or global scope - all which we’ll go over later on - regardless 
-// of the containing block
+// module, namespace, or global scope - regardless of the containing block
 
 // in the following function all of the i variables are the same thing
 function sumMatrix(matrix: number[][]) {
@@ -25,7 +24,7 @@ function sumMatrix(matrix: number[][]) {
     return sum;
 }
 
-// the following 
+// let has different scoping to var
 for (var i = 0; i < 10; i++) {
     setTimeout(function () { console.log(i); }, 100 * i);
 }
