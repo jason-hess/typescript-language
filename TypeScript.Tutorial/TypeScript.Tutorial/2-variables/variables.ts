@@ -127,3 +127,8 @@ yetAnotherFunction();
 function jason(x: string, ...theRest) {
 
 }
+
+// TypeScript also support union types to specify a variable can be one
+// of several types:
+let x: (number | string) = 10;
+x = "10";

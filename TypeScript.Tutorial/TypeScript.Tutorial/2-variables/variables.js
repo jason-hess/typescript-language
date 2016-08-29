@@ -113,4 +113,8 @@ function jason(x) {
         theRest[_i - 1] = arguments[_i];
     }
 }
+// TypeScript also support union types to specify a variable can be one
+// of several types:
+var x = 10;
+x = "10";
 var _a, _b;
