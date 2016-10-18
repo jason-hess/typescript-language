@@ -17,18 +17,16 @@ var octal = 484;
 // string
 var color = "blue";
 color = 'red'; // can use single quotes
-var fullName = "Justin Talor";
 var age = 10;
-// template strings can be multi-line and substittute variables
-var theString = "This a template string\n" + fullName + ": " + (age + 1);
+// template strings can be multi-line and substitute variables
+var theString = "This a template string\n" + color + ": " + (age + 1);
 // array
-var theList = [1, 2, 3];
-var anotherList = [1, 2, 3];
+var theList = [1, 2, 3]; // or: let anotherList: Array<number> = [1, 2, 3];
 // because arrays are JavaScript arrays, you can add elements to them and create holes in them
 theList[3] = 4;
 theList.push(5);
-anotherList[100] = 101;
-var hole = anotherList[99]; // sets hole to undefined
+theList[100] = 101;
+var hole = theList[99]; // sets hole to undefined
 // Tuple types allow you to express an array where the type of a fixed number of elements is known, 
 // but need not be the same and lets you specify type assertions on the elements.
 var firstTuple = ["key", 1];
@@ -36,9 +34,9 @@ firstTuple[0] = "newKey";
 firstTuple[1] = 13;
 firstTuple = ["anotherKey", 22];
 firstTuple = [true, "jason"]; // invalid
-var anotherTuple = [1, "key"];
-// can access an index outside of the legal range: (I'm not sure why)
-anotherTuple[3] = "true";
+var implicityTypedTuple = [1, "key"];
+// can access an index outside of the legal range
+implicityTypedTuple[3] = "true";
 // enum
 var Colour;
 (function (Colour) {
@@ -55,7 +53,7 @@ var Speed;
     Speed[Speed["Slow"] = 1] = "Slow";
     Speed[Speed["Fast"] = 2] = "Fast";
 })(Speed || (Speed = {}));
-; // Spped.Fast = 2
+; // Speed.Fast = 2
 // or we can specify the numeric value of each enum value
 var AnotherEnum;
 (function (AnotherEnum) {
@@ -74,12 +72,15 @@ var z = "string";
 z = 10;
 z = true;
 var untypedList = ["string", 10];
+// null and undefined are two different values
+z = undefined;
+z = null;
 // void
-var t = null;
+var t;
 var u = undefined;
 // void is only really useful for functions:
 function voidFunction() {
-    // i don't return anything
+    // i don't return a value
 }
 // type inference
 var isAlsoDone = true;
@@ -97,7 +98,7 @@ var aLength = aValue.length;
 var tz = null;
 // A union type describes a value that can be one of several types
 // If we have a value that has a union type, we can only access members that are common to all types in the union.
-var unionType = "10";
+var unionType = "true";
 unionType = true;
 unionType = 10; // error
 var anotherUnionType; // parens are optional
@@ -106,6 +107,7 @@ var unionOfNumberOrStringArray;
 // used in functions
 function unionTypeParameter(value, suffixOrPadding) {
     if (typeof suffixOrPadding == "boolean") {
+        var y_1 = suffixOrPadding; // TypeScript infers the type of y as boolean here
     }
     if (typeof suffixOrPadding == "string") {
     }
@@ -156,7 +158,7 @@ window.onmousedown = function (mouseEvent) {
 // The contextual type also acts as a candidate type in best common type.For example:
 // type guard
 // A type guard is some expression that performs a runtime check that 
-// guarantees the type in some scope.To define a type guard, we simply 
+// asserts the type in some scope.To define a type guard, we simply 
 // need to define a function whose return type is a type predicate:
 function isBear(pet) {
     return pet.growl !== undefined;
@@ -173,3 +175,21 @@ var explicitGeneric = genericFunction(true);
 // the compiler can sometimes infer the type
 var genericValue = genericFunction("hello"); // returns string
 var genericValue2 = genericFunction(10); // returns number
+// null and undefinied are two different types
+var nullValue;
+nullValue = null;
+nullValue = 10;
+var undefinedValue;
+undefinedValue = undefined;
+undefinedValue = 11;
+// In strict null checking mode, the null and undefined values are not in the domain of 
+// every type and are only assignable to themselves and any (the one exception being that 
+// undefined is also assignable to void).So, whereas T and T | undefined are considered synonymous in 
+// regular type checking mode (because undefined is considered a subtype of any T), they are different 
+// types in strict type checking mode, and only T | undefined permits undefined values.The same is 
+// true for the relationship of T to T | null.
+var notNullable;
+notNullable = 13;
+notNullable = null;
+var aFullName = "Jason";
+var aLastName = aFullName;
