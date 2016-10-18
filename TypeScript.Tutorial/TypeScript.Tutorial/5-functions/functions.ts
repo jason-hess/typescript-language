@@ -68,6 +68,10 @@ function myFunction(x): void {
         
     }
 }
+
+// type unions are another way of doing this:
+function myUnionTypeParamFunction(x: number | string)
+
 // another option is to use type unions for parameters:
 function myTypeUnionParameterFunction(x: number | string) {
     if (typeof x == "number") {

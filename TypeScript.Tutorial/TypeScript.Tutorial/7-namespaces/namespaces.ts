@@ -1,4 +1,8 @@
-﻿namespace Validation {
+﻿// TypeScript Namespaces allow you to organize names and hide implementation details
+
+namespace Validation {
+
+    // export indicates visible outside of the namespace
     export interface StringValidator {
         isAcceptable(s: string): boolean;
     }
@@ -18,3 +22,12 @@
         }
     }
 }
+
+Validation.lettersRegexp // error - not visible
+let validator = new Validation.LettersOnlyValidator();
+
+// Namespace Aliases
+import val = Validation;
+let anotherValidor = new val.LettersOnlyValidator();
+import val2 = Validation.LettersOnlyValidator;
+let anotherValidator = new val2();

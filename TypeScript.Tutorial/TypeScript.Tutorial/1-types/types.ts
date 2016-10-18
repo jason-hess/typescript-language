@@ -3,6 +3,7 @@
 // boolean
 let isDone: boolean = false;
 
+// number
 // As in JavaScript, all numbers in TypeScript are floating point values. 
 // These floating point numbers get the type number. In addition to hexadecimal and decimal literals, 
 // TypeScript also supports binary and octal literals introduced in ECMAScript 2015.
@@ -16,15 +17,16 @@ let color: string = "blue";
 color = 'red'; // can use single quotes
 let fullName: string = "Justin Talor";
 let age: number = 10;
+// template strings can be multi-line and substittute variables
 let theString: string = `This a template string
 ${fullName}: ${age + 1}`;
 
 // array
-let list: number[] = [1, 2, 3];
+let theList: number[] = [1, 2, 3];
 let anotherList: Array<number> = [1, 2, 3];
 // because arrays are JavaScript arrays, you can add elements to them and create holes in them
-list[3] = 4;
-list.push(5);
+theList[3] = 4;
+theList.push(5);
 anotherList[100] = 101;
 let hole: number = anotherList[99]; // sets hole to undefined
 
@@ -47,7 +49,7 @@ let y = Colour.Red;
 enum Speed { Slow = 1, Fast }; // Spped.Fast = 2
 // or we can specify the numeric value of each enum value
 enum AnotherEnum { ValueOne = 10, ValueTwo = 13 };
-// we can convert from numeric to string value 
+// we can convert from numeric to string value and back again 
 let enumValue: string = AnotherEnum[13]; // enumValue = "ValueTwo"
 let enumNumberValue: number = AnotherEnum["ValueTwo"];
 let anotherEnumValue: AnotherEnum = 13;
@@ -85,6 +87,23 @@ let aLength: number = (<string>aValue).length;
 // use let instead of var whenever possible to prevent scope issues
 var tz: string = null;
 
+// A union type describes a value that can be one of several types
+// If we have a value that has a union type, we can only access members that are common to all types in the union.
+let unionType: (boolean | string) = "10";
+unionType = true;
+unionType = 10; // error
+let anotherUnionType: number | string; // parens are optional
+let arrayUnionType: (number | string)[]; // or a required for precedence
+let unionOfNumberOrStringArray: number | string[];
+// used in functions
+function unionTypeParameter(value: string, suffixOrPadding: boolean | string): string {
+    if (typeof suffixOrPadding == "boolean") {
+    }
+    if (typeof suffixOrPadding == "string") {
+    }
+    return "";
+}
+
 // in most cases (assigning default values to variables and paramaters, and setting
 // function return values) type inferenece is straightforward
 let typeInferred = true;
@@ -115,24 +134,6 @@ window.onmousedown = mouseEvent => {
 // Contextual typing applies in many cases. Common cases include arguments to function calls, right hand 
 // sides of assignments, type assertions, members of object and array literals, and return statements. 
 // The contextual type also acts as a candidate type in best common type.For example:
-
-// union types
-// A union type describes a value that can be one of several types
-// If we have a value that has a union type, we can only access members that are common to all types in the union.
-let unionType: boolean | string = "10";
-unionType = true;
-unionType = 10; // error
-let anotherUnionType: (number | string); // parens are optional
-let arrayUnionType: (number | string)[]; // or a required for precedence
-let unionOfNumberOrStringArray: number | string[];
-// used in functions
-function unionTypeParameter(value: string, suffixOrPadding: boolean | string) : string {
-    if (typeof suffixOrPadding == "boolean") {
-    }
-    if (typeof suffixOrPadding == "string") {
-    }
-    return "";
-}
 
 // type guard
 // A type guard is some expression that performs a runtime check that 

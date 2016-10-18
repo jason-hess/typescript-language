@@ -25,7 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>2.0</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -88,6 +88,13 @@
     <TypeScriptCompile Include="3-interfaces\interfaces.ts" />
     <TypeScriptCompile Include="4-classes\classes.ts" />
     <TypeScriptCompile Include="5-functions\functions.ts" />
+    <TypeScriptCompile Include="6-modules\ParseIntBasedZipCodeValidator.ts" />
+    <TypeScriptCompile Include="6-modules\ZipCodeValidator.ts" />
+    <TypeScriptCompile Include="6-modules\IExportedStringValidator.ts" />
+    <TypeScriptCompile Include="6-modules\modules.ts" />
+    <TypeScriptCompile Include="7-namespaces\multi-file-namespace-2.ts" />
+    <None Include="7-namespaces\multi-file-namespace.ts" />
+    <TypeScriptCompile Include="5-functions\iterators.ts" />
     <TypeScriptCompile Include="7-namespaces\namespaces.ts" />
   </ItemGroup>
   <ItemGroup>
